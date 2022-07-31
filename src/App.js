@@ -29,7 +29,7 @@ function App() {
   });
   const initialValues = {
     LIMIT_BAL: 20000,
-    SEX: 2,
+    SEX: "M",
     AGE: 24,
     PAY_0: 2,
     PAY_2: 2,
@@ -58,7 +58,7 @@ function App() {
   const onSubmit = async (values) => {
     let {
       LIMIT_BAL,
-      SEX,
+      _SEX,
       AGE,
       PAY_0,
       PAY_2,
@@ -80,6 +80,9 @@ function App() {
       PAY_AMT6,
     } = values;
     console.log(values);
+    let SEX;
+    if ((_SEX = "M" || "m")) SEX = 1;
+    else SEX = 2;
 
     const requestOptions = {
       method: "POST",
@@ -176,7 +179,7 @@ function App() {
                   <input
                     type="text"
                     name="SEX"
-                    placeholder="SEX"
+                    placeholder="Input M or F"
                     value={values.SEX}
                     onChange={handleChange}
                   />
