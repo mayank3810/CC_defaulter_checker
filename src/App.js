@@ -52,6 +52,8 @@ function App() {
   };
 
   const [slide, setSlide] = useState(1);
+  const [isdefault, setisDefault] = useState();
+  const [isLoading, setisLoading] = useState(true);
 
   const onSubmit = async (values) => {
     let {
@@ -111,7 +113,17 @@ function App() {
       requestOptions
     );
     const data = await response.json();
-    console.log(data);
+    setSlide(slide + 1);
+    if (data === "Customer will DEFAULT !!!") {
+      setisLoading(false);
+      setisDefault(true);
+    }
+
+    if (data === "Customer will not default") {
+      setisLoading(false);
+      setisDefault(false);
+    }
+    // console.log(data);
     // this.setState({ postId: data.id });
   };
 
@@ -142,7 +154,7 @@ function App() {
 
             {slide === 1 && (
               <>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="LIMIT_BAL" className="question_title">
                     Limit Balance
                   </label>
@@ -159,7 +171,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="SEX">Sex</label>
                   <input
                     type="text"
@@ -174,7 +186,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="AGE">Age</label>
                   <input
                     type="text"
@@ -194,7 +206,7 @@ function App() {
 
             {slide === 2 && (
               <>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_0">PAY_0</label>
                   <input
                     type="text"
@@ -209,7 +221,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_2">PAY_2</label>
                   <input
                     type="text"
@@ -224,7 +236,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_3">PAY_3</label>
                   <input
                     type="text"
@@ -239,7 +251,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_4">PAY_4</label>
                   <input
                     type="text"
@@ -254,7 +266,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_5">PAY_5</label>
                   <input
                     type="text"
@@ -269,7 +281,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_6">PAY_6</label>
                   <input
                     type="text"
@@ -289,7 +301,7 @@ function App() {
 
             {slide === 3 && (
               <>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="BILL_AMT1">BILL_AMT1</label>
                   <input
                     type="text"
@@ -304,7 +316,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="BILL_AMT2">BILL_AMT2</label>
                   <input
                     type="text"
@@ -319,7 +331,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="BILL_AMT3">BILL_AMT3</label>
                   <input
                     type="text"
@@ -334,7 +346,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="BILL_AMT4">BILL_AMT4</label>
                   <input
                     type="text"
@@ -349,7 +361,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="BILL_AMT5">BILL_AMT5</label>
                   <input
                     type="text"
@@ -364,7 +376,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="BILL_AMT6">BILL_AMT6</label>
                   <input
                     type="text"
@@ -384,7 +396,7 @@ function App() {
 
             {slide === 4 && (
               <>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_AMT1">PAY_AMT1</label>
                   <input
                     type="text"
@@ -399,7 +411,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_AMT2">PAY_AMT2</label>
                   <input
                     type="text"
@@ -414,7 +426,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_AMT3">PAY_AMT3</label>
                   <input
                     type="text"
@@ -429,7 +441,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_AMT4">PAY_AMT4</label>
                   <input
                     type="text"
@@ -444,7 +456,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_AMT5">PAY_AMT5</label>
                   <input
                     type="text"
@@ -459,7 +471,7 @@ function App() {
                     </div>
                   )}
                 </div>
-                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                <div className="form-group animate__animated animate__fadeInRight animate_25ms">
                   <label htmlFor="PAY_AMT6">PAY_AMT6</label>
                   <input
                     type="text"
@@ -479,8 +491,31 @@ function App() {
                   id="cc-form"
                   className="btn btn-primary btn-lg submit-btn"
                 >
-                  Submit
+                  {!isLoading ? "loading" : "Submit"}
                 </button>
+              </>
+            )}
+            {slide === 5 && (
+              <>
+                {isLoading ? (
+                  <h1 className="text-center" style={{ color: "grey" }}>
+                    Loading
+                  </h1>
+                ) : (
+                  <>
+                    {isdefault && (
+                      <h1 className="text-center" style={{ color: "red" }}>
+                        Customer will DEFAULT
+                      </h1>
+                    )}
+
+                    {!isdefault && (
+                      <h1 className="text-center" style={{ color: "green" }}>
+                        Customer will not DEFAULT
+                      </h1>
+                    )}
+                  </>
+                )}
               </>
             )}
 
