@@ -1,6 +1,7 @@
 import "./App.css";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { useState } from "react";
 
 function App() {
   const validationSchema = Yup.object().shape({
@@ -49,6 +50,8 @@ function App() {
     PAY_AMT5: 0,
     PAY_AMT6: 0,
   };
+
+  const [slide, setSlide] = useState(1);
 
   const onSubmit = async (values) => {
     let {
@@ -125,328 +128,367 @@ function App() {
         <div className="container">
           <form
             className="multisteps_form position-relative overflow-hidden mt-5 my-form"
-            id="nft-detail-form"
+            id="cc-form"
             onSubmit={handleSubmit}
           >
             {/* Form-header-content */}
-            <div className="form_header_content text-center pt-4">
+            <div className="form_header_content text-center pt-4 mb-5">
               <h2>CC Defaulter Check</h2>
               <span>
                 Please fill out this form to predict whether the person will
                 default on their CC payment.
               </span>
             </div>
-            <label htmlFor="LIMIT_BAL">Limit Balance</label>
-            <input
-              type="text"
-              name="LIMIT_BAL"
-              placeholder="LIMIT_BAL"
-              value={values.LIMIT_BAL}
-              onChange={handleChange}
-            />
-            {errors.LIMIT_BAL && touched.LIMIT_BAL && (
-              <div id="basicValidationName-error" className="error">
-                {errors.LIMIT_BAL}
-              </div>
+
+            {slide === 1 && (
+              <>
+                <div class="form-group animate__animated animate__fadeInRight animate_25ms">
+                  <label htmlFor="LIMIT_BAL" className="question_title">
+                    Limit Balance
+                  </label>
+                  <input
+                    type="text"
+                    name="LIMIT_BAL"
+                    placeholder="LIMIT_BAL"
+                    value={values.LIMIT_BAL}
+                    onChange={handleChange}
+                  />
+                  {errors.LIMIT_BAL && touched.LIMIT_BAL && (
+                    <div id="basicValidationName-error" className="error">
+                      {errors.LIMIT_BAL}
+                    </div>
+                  )}
+                </div>
+                <div class="form-group">
+                  <label htmlFor="SEX">Sex</label>
+                  <input
+                    type="text"
+                    name="SEX"
+                    placeholder="SEX"
+                    value={values.SEX}
+                    onChange={handleChange}
+                  />
+                  {errors.SEX && touched.SEX && (
+                    <div id="basicValidationName-error" className="error">
+                      {errors.SEX}
+                    </div>
+                  )}
+                </div>
+                <div class="form-group">
+                  <label htmlFor="AGE">Age</label>
+                  <input
+                    type="text"
+                    name="AGE"
+                    placeholder="AGE"
+                    value={values.AGE}
+                    onChange={handleChange}
+                  />
+                  {errors.AGE && touched.AGE && (
+                    <div id="basicValidationName-error" className="error">
+                      {errors.AGE}
+                    </div>
+                  )}
+                </div>
+              </>
             )}
 
-            <label htmlFor="SEX">Sex</label>
-            <input
-              type="text"
-              name="SEX"
-              placeholder="SEX"
-              value={values.SEX}
-              onChange={handleChange}
-            />
-            {errors.SEX && touched.SEX && (
-              <div id="basicValidationName-error" className="error">
-                {errors.SEX}
-              </div>
+            {slide === 2 && (
+              <>
+                <label htmlFor="PAY_0">PAY_0</label>
+                <input
+                  type="text"
+                  name="PAY_0"
+                  placeholder="PAY_0"
+                  value={values.PAY_0}
+                  onChange={handleChange}
+                />
+                {errors.PAY_0 && touched.PAY_0 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_0}
+                  </div>
+                )}
+
+                <label htmlFor="PAY_2">PAY_2</label>
+                <input
+                  type="text"
+                  name="PAY_2"
+                  placeholder="PAY_2"
+                  value={values.PAY_2}
+                  onChange={handleChange}
+                />
+                {errors.PAY_2 && touched.PAY_2 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_2}
+                  </div>
+                )}
+
+                <label htmlFor="PAY_3">PAY_3</label>
+                <input
+                  type="text"
+                  name="PAY_3"
+                  placeholder="PAY_3"
+                  value={values.PAY_3}
+                  onChange={handleChange}
+                />
+                {errors.PAY_3 && touched.PAY_3 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_3}
+                  </div>
+                )}
+
+                <label htmlFor="PAY_4">PAY_4</label>
+                <input
+                  type="text"
+                  name="PAY_4"
+                  placeholder="PAY_4"
+                  value={values.PAY_4}
+                  onChange={handleChange}
+                />
+                {errors.PAY_4 && touched.PAY_4 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_4}
+                  </div>
+                )}
+
+                <label htmlFor="PAY_5">PAY_5</label>
+                <input
+                  type="text"
+                  name="PAY_5"
+                  placeholder="PAY_5"
+                  value={values.PAY_5}
+                  onChange={handleChange}
+                />
+                {errors.PAY_5 && touched.PAY_5 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_5}
+                  </div>
+                )}
+
+                <label htmlFor="PAY_6">PAY_6</label>
+                <input
+                  type="text"
+                  name="PAY_6"
+                  placeholder="PAY_6"
+                  value={values.PAY_6}
+                  onChange={handleChange}
+                />
+                {errors.PAY_6 && touched.PAY_6 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_6}
+                  </div>
+                )}
+              </>
             )}
 
-            <label htmlFor="AGE">Age</label>
-            <input
-              type="text"
-              name="AGE"
-              placeholder="AGE"
-              value={values.AGE}
-              onChange={handleChange}
-            />
-            {errors.AGE && touched.AGE && (
-              <div id="basicValidationName-error" className="error">
-                {errors.AGE}
-              </div>
+            {slide === 3 && (
+              <>
+                <label htmlFor="BILL_AMT1">BILL_AMT1</label>
+                <input
+                  type="text"
+                  name="BILL_AMT1"
+                  placeholder="BILL_AMT1"
+                  value={values.BILL_AMT1}
+                  onChange={handleChange}
+                />
+                {errors.BILL_AMT1 && touched.BILL_AMT1 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.BILL_AMT1}
+                  </div>
+                )}
+
+                <label htmlFor="BILL_AMT2">BILL_AMT2</label>
+                <input
+                  type="text"
+                  name="BILL_AMT2"
+                  placeholder="BILL_AMT2"
+                  value={values.BILL_AMT2}
+                  onChange={handleChange}
+                />
+                {errors.BILL_AMT2 && touched.BILL_AMT2 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.BILL_AMT2}
+                  </div>
+                )}
+
+                <label htmlFor="BILL_AMT3">BILL_AMT3</label>
+                <input
+                  type="text"
+                  name="BILL_AMT3"
+                  placeholder="BILL_AMT3"
+                  value={values.BILL_AMT3}
+                  onChange={handleChange}
+                />
+                {errors.BILL_AMT3 && touched.BILL_AMT3 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.BILL_AMT3}
+                  </div>
+                )}
+                <label htmlFor="BILL_AMT4">BILL_AMT4</label>
+                <input
+                  type="text"
+                  name="BILL_AMT4"
+                  placeholder="BILL_AMT4"
+                  value={values.BILL_AMT4}
+                  onChange={handleChange}
+                />
+                {errors.BILL_AMT4 && touched.BILL_AMT4 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.BILL_AMT4}
+                  </div>
+                )}
+
+                <label htmlFor="BILL_AMT5">BILL_AMT5</label>
+                <input
+                  type="text"
+                  name="BILL_AMT5"
+                  placeholder="BILL_AMT5"
+                  value={values.BILL_AMT5}
+                  onChange={handleChange}
+                />
+                {errors.BILL_AMT5 && touched.BILL_AMT5 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.BILL_AMT5}
+                  </div>
+                )}
+
+                <label htmlFor="BILL_AMT6">BILL_AMT6</label>
+                <input
+                  type="text"
+                  name="BILL_AMT6"
+                  placeholder="BILL_AMT6"
+                  value={values.BILL_AMT6}
+                  onChange={handleChange}
+                />
+                {errors.BILL_AMT6 && touched.BILL_AMT6 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.BILL_AMT6}
+                  </div>
+                )}
+              </>
             )}
 
-            <label htmlFor="PAY_0">PAY_0</label>
-            <input
-              type="text"
-              name="PAY_0"
-              placeholder="PAY_0"
-              value={values.PAY_0}
-              onChange={handleChange}
-            />
-            {errors.PAY_0 && touched.PAY_0 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_0}
-              </div>
-            )}
+            {slide === 4 && (
+              <>
+                <label htmlFor="PAY_AMT1">PAY_AMT1</label>
+                <input
+                  type="text"
+                  name="PAY_AMT1"
+                  placeholder="PAY_AMT1"
+                  value={values.PAY_AMT1}
+                  onChange={handleChange}
+                />
+                {errors.PAY_AMT1 && touched.PAY_AMT1 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_AMT1}
+                  </div>
+                )}
 
-            <label htmlFor="PAY_2">PAY_2</label>
-            <input
-              type="text"
-              name="PAY_2"
-              placeholder="PAY_2"
-              value={values.PAY_2}
-              onChange={handleChange}
-            />
-            {errors.PAY_2 && touched.PAY_2 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_2}
-              </div>
-            )}
+                <label htmlFor="PAY_AMT2">PAY_AMT2</label>
+                <input
+                  type="text"
+                  name="PAY_AMT2"
+                  placeholder="PAY_AMT2"
+                  value={values.PAY_AMT2}
+                  onChange={handleChange}
+                />
+                {errors.PAY_AMT2 && touched.PAY_AMT2 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_AMT2}
+                  </div>
+                )}
 
-            <label htmlFor="PAY_3">PAY_3</label>
-            <input
-              type="text"
-              name="PAY_3"
-              placeholder="PAY_3"
-              value={values.PAY_3}
-              onChange={handleChange}
-            />
-            {errors.PAY_3 && touched.PAY_3 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_3}
-              </div>
-            )}
+                <label htmlFor="PAY_AMT3">PAY_AMT3</label>
+                <input
+                  type="text"
+                  name="PAY_AMT3"
+                  placeholder="PAY_AMT3"
+                  value={values.PAY_AMT3}
+                  onChange={handleChange}
+                />
+                {errors.PAY_AMT3 && touched.PAY_AMT3 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_AMT3}
+                  </div>
+                )}
 
-            <label htmlFor="PAY_4">PAY_4</label>
-            <input
-              type="text"
-              name="PAY_4"
-              placeholder="PAY_4"
-              value={values.PAY_4}
-              onChange={handleChange}
-            />
-            {errors.PAY_4 && touched.PAY_4 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_4}
-              </div>
-            )}
+                <label htmlFor="PAY_AMT4">PAY_AMT4</label>
+                <input
+                  type="text"
+                  name="PAY_AMT4"
+                  placeholder="PAY_AMT4"
+                  value={values.PAY_AMT4}
+                  onChange={handleChange}
+                />
+                {errors.PAY_AMT4 && touched.PAY_AMT4 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_AMT4}
+                  </div>
+                )}
 
-            <label htmlFor="PAY_5">PAY_5</label>
-            <input
-              type="text"
-              name="PAY_5"
-              placeholder="PAY_5"
-              value={values.PAY_5}
-              onChange={handleChange}
-            />
-            {errors.PAY_5 && touched.PAY_5 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_5}
-              </div>
-            )}
+                <label htmlFor="PAY_AMT5">PAY_AMT5</label>
+                <input
+                  type="text"
+                  name="PAY_AMT5"
+                  placeholder="PAY_AMT5"
+                  value={values.PAY_AMT5}
+                  onChange={handleChange}
+                />
+                {errors.PAY_AMT5 && touched.PAY_AMT5 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_AMT5}
+                  </div>
+                )}
 
-            <label htmlFor="PAY_6">PAY_6</label>
-            <input
-              type="text"
-              name="PAY_6"
-              placeholder="PAY_6"
-              value={values.PAY_6}
-              onChange={handleChange}
-            />
-            {errors.PAY_6 && touched.PAY_6 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_6}
-              </div>
+                <label htmlFor="PAY_AMT6">PAY_AMT6</label>
+                <input
+                  type="text"
+                  name="PAY_AMT6"
+                  placeholder="PAY_AMT6"
+                  value={values.PAY_AMT6}
+                  onChange={handleChange}
+                />
+                {errors.PAY_AMT6 && touched.PAY_AMT6 && (
+                  <div id="basicValidationName-error" className="error">
+                    {errors.PAY_AMT6}
+                  </div>
+                )}
+              </>
             )}
-
-            <label htmlFor="BILL_AMT1">BILL_AMT1</label>
-            <input
-              type="text"
-              name="BILL_AMT1"
-              placeholder="BILL_AMT1"
-              value={values.BILL_AMT1}
-              onChange={handleChange}
-            />
-            {errors.BILL_AMT1 && touched.BILL_AMT1 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.BILL_AMT1}
-              </div>
-            )}
-
-            <label htmlFor="BILL_AMT2">BILL_AMT2</label>
-            <input
-              type="text"
-              name="BILL_AMT2"
-              placeholder="BILL_AMT2"
-              value={values.BILL_AMT2}
-              onChange={handleChange}
-            />
-            {errors.BILL_AMT2 && touched.BILL_AMT2 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.BILL_AMT2}
-              </div>
-            )}
-
-            <label htmlFor="BILL_AMT3">BILL_AMT3</label>
-            <input
-              type="text"
-              name="BILL_AMT3"
-              placeholder="BILL_AMT3"
-              value={values.BILL_AMT3}
-              onChange={handleChange}
-            />
-            {errors.BILL_AMT3 && touched.BILL_AMT3 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.BILL_AMT3}
-              </div>
-            )}
-            <label htmlFor="BILL_AMT4">BILL_AMT4</label>
-            <input
-              type="text"
-              name="BILL_AMT4"
-              placeholder="BILL_AMT4"
-              value={values.BILL_AMT4}
-              onChange={handleChange}
-            />
-            {errors.BILL_AMT4 && touched.BILL_AMT4 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.BILL_AMT4}
-              </div>
-            )}
-
-            <label htmlFor="BILL_AMT5">BILL_AMT5</label>
-            <input
-              type="text"
-              name="BILL_AMT5"
-              placeholder="BILL_AMT5"
-              value={values.BILL_AMT5}
-              onChange={handleChange}
-            />
-            {errors.BILL_AMT5 && touched.BILL_AMT5 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.BILL_AMT5}
-              </div>
-            )}
-
-            <label htmlFor="BILL_AMT6">BILL_AMT6</label>
-            <input
-              type="text"
-              name="BILL_AMT6"
-              placeholder="BILL_AMT6"
-              value={values.BILL_AMT6}
-              onChange={handleChange}
-            />
-            {errors.BILL_AMT6 && touched.BILL_AMT6 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.BILL_AMT6}
-              </div>
-            )}
-
-            <label htmlFor="PAY_AMT1">PAY_AMT1</label>
-            <input
-              type="text"
-              name="PAY_AMT1"
-              placeholder="PAY_AMT1"
-              value={values.PAY_AMT1}
-              onChange={handleChange}
-            />
-            {errors.PAY_AMT1 && touched.PAY_AMT1 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_AMT1}
-              </div>
-            )}
-
-            <label htmlFor="PAY_AMT2">PAY_AMT2</label>
-            <input
-              type="text"
-              name="PAY_AMT2"
-              placeholder="PAY_AMT2"
-              value={values.PAY_AMT2}
-              onChange={handleChange}
-            />
-            {errors.PAY_AMT2 && touched.PAY_AMT2 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_AMT2}
-              </div>
-            )}
-
-            <label htmlFor="PAY_AMT3">PAY_AMT3</label>
-            <input
-              type="text"
-              name="PAY_AMT3"
-              placeholder="PAY_AMT3"
-              value={values.PAY_AMT3}
-              onChange={handleChange}
-            />
-            {errors.PAY_AMT3 && touched.PAY_AMT3 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_AMT3}
-              </div>
-            )}
-
-            <label htmlFor="PAY_AMT4">PAY_AMT4</label>
-            <input
-              type="text"
-              name="PAY_AMT4"
-              placeholder="PAY_AMT4"
-              value={values.PAY_AMT4}
-              onChange={handleChange}
-            />
-            {errors.PAY_AMT4 && touched.PAY_AMT4 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_AMT4}
-              </div>
-            )}
-
-            <label htmlFor="PAY_AMT5">PAY_AMT5</label>
-            <input
-              type="text"
-              name="PAY_AMT5"
-              placeholder="PAY_AMT5"
-              value={values.PAY_AMT5}
-              onChange={handleChange}
-            />
-            {errors.PAY_AMT5 && touched.PAY_AMT5 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_AMT5}
-              </div>
-            )}
-
-            <label htmlFor="PAY_AMT6">PAY_AMT6</label>
-            <input
-              type="text"
-              name="PAY_AMT6"
-              placeholder="PAY_AMT6"
-              value={values.PAY_AMT6}
-              onChange={handleChange}
-            />
-            {errors.PAY_AMT6 && touched.PAY_AMT6 && (
-              <div id="basicValidationName-error" className="error">
-                {errors.PAY_AMT6}
-              </div>
-            )}
-
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              id="cc-form"
+              className="btn btn-primary btn-lg submit-btn"
+            >
+              Submit
+            </button>
           </form>
         </div>
         {/*-------- Form Button --------*/}
         <div className="form_btn py-5 text-center">
           <button
             type="button"
-            className="f_btn disable text-uppercase rounded-pill text-white"
+            className="f_btn active text-uppercase rounded-pill text-white"
+            onClick={() => {
+              if (slide > 1) {
+                setSlide(slide - 1);
+              }
+            }}
           >
             <span>
               <i className="fas fa-arrow-left" />
             </span>{" "}
             Previous
           </button>
+
           <button
             type="button"
             className="f_btn active text-uppercase rounded-pill text-white"
             id="nextBtn"
+            onClick={() => {
+              if (slide < 4) {
+                setSlide(slide + 1);
+              }
+            }}
           >
             {" "}
             Next
